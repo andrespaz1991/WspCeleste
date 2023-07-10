@@ -1,0 +1,25 @@
+<script src="index.js"></script>
+
+<script>
+    function saveQRCodeToHTML(qr) {
+  qrcode.toDataURL(qr, { small: true }, (err, url) => {
+    if (err) {
+      console.error('Error al generar el código QR:', err);
+      return;
+    }
+
+    const qrHtml = `<img src="${url}">`;
+
+    fs.writeFile(qrFilePath, qrHtml, (err) => {
+      if (err) {
+        console.error('Error al guardar el código QR en el archivo:', err);
+        return;
+      }
+
+      console.log('El código QR ha sido guardado en el archivo:', qrFilePath);
+    });
+  });
+}
+
+</script>
+<h1>Hola Mundo</h1>
